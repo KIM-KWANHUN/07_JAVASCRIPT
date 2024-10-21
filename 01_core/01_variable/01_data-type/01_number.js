@@ -25,7 +25,7 @@
        -Infinty : 음의 무한대
        NaN : 산술 연산 불가 Not a Number */
 
-    console.log(10 / 0);
-    console.log(10 / -0);
-    console.log(1 * '문자열');
+    console.log(10 / 0); // Infinity
+    console.log(10 / -0); // -Infinity
+    console.log(1 * '문자열'); // NaN
         
