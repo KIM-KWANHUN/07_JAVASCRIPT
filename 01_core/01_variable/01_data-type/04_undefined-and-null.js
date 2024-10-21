@@ -11,7 +11,10 @@
    var undef; // 변수 선언
    console.log(undef);
 
-   /* null 타입 */
+   /* null 타입
+      null -> 아무것도 참조하지 않는다.
+      그렇다는 것은 가비지 컬렉터가 메모리를 청소할 때
+      NULL 을 제거한다. */
 
    var nullValue = 'hi';
    nullValue = null // 이전에 참조하고 있는 hi 공간을 

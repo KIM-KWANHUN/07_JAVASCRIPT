@@ -17,7 +17,7 @@ javascript case
     - 이 친구들을 제외한 모든 값은 Truthy 값이다. */
 
 if(true) console.log('동작하니?');
-if(false) console.log('동작하니?');
-if(undefined) console.log('동작하니?');
+if(false) console.log('동작하니?'); // 출력 X
+if(undefined) console.log('동작하니?'); // 출력 X
 if(4) console.log('동작하니?');
-if('') console.log('동작하니?');
+if('') console.log('동작하니?'); // 출력 X

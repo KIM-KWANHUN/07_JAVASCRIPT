@@ -13,12 +13,13 @@ console.log(10 * 'hi'); // 피연산자가 숫자로 변환 불가하기 때문�
 
 console.log('=======================================================');
 console.log(+''); // 빈문자열 -> 0
-console.log(+'10');
-console.log(+'java'); // 숫자로 변환 불가
-console.log(+ true);
-console.log(+ false);
-console.log(+ null);
-console.log(+ undefined);
-console.log(+ {});
-console.log(+ []);
-console.log(+function(){});
+console.log(+'10'); // 10
+console.log(+'java'); // NaN 숫자로 변환 불가
+console.log(+ true); // 1
+console.log(+ false); // 0
+console.log(+ null); // 0
+console.log(+ undefined); // NaN
+console.log(+ {}); // NaN
+console.log(+ []); // 0 빈 배열은 0으로 변환된다.
+console.log(+function(){}); // NaN
+
