@@ -9,3 +9,4 @@ var obj = null;
 var val = obj?.value;
 
 console.log(val);
+

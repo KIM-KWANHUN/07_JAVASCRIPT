@@ -7,6 +7,8 @@
     var test = null ?? '기본값';
     console.log(test);
     console.log('=============================');
+    /* null 병합 연산자 이전에는 논리연산자 || 를 사용한
+       단축 평가로 변수에 기본값을 설정하였다. */
     var test1 = '안녕' ?? '기본값';
     console.log(test1)
 

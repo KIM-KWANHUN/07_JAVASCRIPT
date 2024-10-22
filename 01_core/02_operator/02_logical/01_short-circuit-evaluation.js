@@ -42,4 +42,3 @@ var obj = null;
 var val = obj && obj.value;
 
 console.log(val);
-    
