@@ -8,3 +8,4 @@ console.log(String(10)); // string 생성자 함수
 
 // 2. Object.prototype.toString 메소드 사용
 console.log((10).toString());
+

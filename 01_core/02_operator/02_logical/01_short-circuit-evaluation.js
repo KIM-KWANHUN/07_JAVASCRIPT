@@ -10,9 +10,36 @@
      console.log('apple' || 'banana'); // apple
      console.log(false || 'banana'); // banana
      console.log('apple' || false); // apple
-     console.log('============================')
+     console.log('============================');
 // AND 의 경우 좌항과 우항 모두 확인해야 하기 때문에
 // 논리 연산의 결과를 결정하는 banana 가 반환이 된다.
      console.log('apple' && 'banana'); // banana
      console.log(false && 'banana'); // false
      console.log('apple' && false); // false
+
+// 단축평가를 사용하게 되면 if 문을 대체할 수 있다.
+    console.log('=============================');
+    var num = 1;
+
+    if(num % 2 == 0)
+        console.log("짝수입니다.")
+    else 
+        console.log("홀수입니다.")
+
+    num % 2 == 0 && console.log('짝수입니다.');
+    num % 2 == 0 || console.log('홀수입니다.');
+    console.log('=============================');
+// 객체를 가리키기를 기대하는 변수가 null 또는 undefined 가 아닌 지 확인하고
+// 프로퍼티를 참조할 때 단축평가를 유용하게 사용할 수 있다.
+
+var obj = null;
+
+// var val = obj.value;
+
+// obj 가 falsy(undefined or null) 값이면 좌항만 실행
+// obj 가 falsy 이기 때문에 val -> null 데이터 타입 반환(값)
+// 만약 obj 가 truthy 값이면 식을 결정짓는 obj.value 출력
+var val = obj && obj.value;
+
+console.log(val);
+    
