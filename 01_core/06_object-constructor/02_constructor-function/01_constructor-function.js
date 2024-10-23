@@ -35,15 +35,15 @@ const student3 = {
    프로퍼티 구조가 동일한 객체를 여러 개 만들 때 간편하게 생성 가능 */
 
 function Student(name, age) {
-    this.name = name;
-    this.age = age;
-    this.getInfo = function() {
+    this.name = name; // 필드
+    this.age = age; // 핃드
+    this.getInfo = function() { // 함수(메소드)
         return `${this.name}(은)는 ${this.age}세입니다.`;
     }
 }
 
 // 생성자 함수를 사용해서 객체 생성하기
-const student4 = new Student('자르반', '4');
+const student4 = new Student('자르반', '4'); // 클래스 생성
 const student5 = new Student('루이', '13');
 
 console.log(student4.getInfo());
