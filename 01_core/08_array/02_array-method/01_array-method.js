@@ -53,3 +53,4 @@ console.log(`splice(3, 1, 'jdbc') : ${backend.splice(3, 1, 'jdbc')}`);
 console.log(backend);
 // 배열의 순서 뒤집기
 console.log(`reverse() : ${[1, 2, 3, 4, 5].reverse()}`);
+

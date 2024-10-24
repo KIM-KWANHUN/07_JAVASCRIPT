@@ -48,12 +48,12 @@ console.log(`인자로 함수 작성해서 내림차순 정렬 : ${numbers}`);
     - for문을 대체할 수 있는 고차함수
     ** 배열.forEach(function(item, index, array){}); **
 */
-
+console.log('====================================================');
 numbers = [1, 2, 3, 4, 5];
 
 numbers.forEach(function(item, index, array){
     console.log(`item : ${item}`); // 1부터 시작하면 시작하는 값 value
-    console.log(`index : ${index}`); // 인덱스 key 값
+    console.log(`index : ${index}`); // 인덱스 0부터 key 값
     console.log(`array : ${array}`); // 배열에 대한 정보
 });
 
@@ -67,7 +67,7 @@ numbers.forEach(function(item, index, array){
 
 // 배열의 forEach 로 요소 출력하기
 numbers.forEach(item => console.log(item));
-
+console.log('====================================================');
 /**********************************************매우중요************************************************************** */
 // 배열의 map() : 배열 요소 전체를 대상으로 콜백함수 호출 후
 // 반환 값들로 *새로운 배열* 을 반환
@@ -83,7 +83,7 @@ const length = ['apple', 'banana', 'mango'].map(item => item.length);
 console.log(length);
 
 console.log(global.length === global);
-
+console.log('====================================================');
 /*
     배열의 filter() -> 검색 기능 굉장히 많이 활용 됨!
     - 배열의 요소 전체를 대상으로 콜백 함수 호출 후
@@ -116,4 +116,53 @@ const sum = numbers.reduce((pre, currV) => {
 });
 
 console.log(`sum : ${sum}`);
+console.log('====================================================');
+/*
+    배열의 some()
+    - 배열 내 일부 요소가 콜백 함수의 테스트를 통과하는 지 확인하여
+    - 결과를 boolean 타입으로 반환
+*/
+
+// 배열의 요소 중 10보다 큰 값이 1개 이상 존재하는 지 확인
+let result = [1, 4, 5, 8, 9].some(item => item > 10);
+
+console.log(`result : ${result}`);
+
+// [1,4,5,7,9] 배열에서 짝수가 있는 지 확인
+
+/*
+    배열 내 모든 요소가 테스트를 통과 하는 지 확인 every();
+    boolean 타입으로 반환 한다.
+*/
+
+result = [1, 4, 5, 3, 2].every(item => item > 3);
+
+console.log(`result : ${result}`);
+
+/*
+    배열의 find()
+    - 배열을 순회하며 각 요소에 대하여 인자로 주어진 콜백함수를 실행하여
+    - 결과가 참인 첫번째 요소를 반환, 참인 요소가 존재하지 않으면 undefined
+*/
+
+const student = [
+    {name : '김관훈', score : 100},
+    {name : '김남규', score : 95},
+    {name : '김규남', score : 85}
+]
+
+result = student.find(item => item.name == '김관훈');
+console.log(`result : ${result}`);
+
+// student 배열에서 90점 넘는 학생만 추출하기
+
+result2 = student.filter(item => item.score >= 90);
+console.log(result2);
+
+result2 = student.filter(function(item){
+    if(item.score >= 90){
+        console.log(result2);
+    }
+});
+
 

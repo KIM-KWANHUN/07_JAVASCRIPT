@@ -44,8 +44,8 @@ console.log(arr.length);
 // 배열은 자바와 마찬가지로 length 라는 프로퍼티를
 // 갖기 때문에 for문 사용할 수 있다.
 
-for(let i =0; i < arr.length; i++  {
+for(let i =0; i < arr.length; i++) {
     console.log(arr[i]);
-})
+};
 
 cosole.lo(typeofarr)
