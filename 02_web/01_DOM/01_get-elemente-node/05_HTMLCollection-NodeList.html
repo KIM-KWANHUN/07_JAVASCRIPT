@@ -102,10 +102,18 @@
         console.log(childNodes);
         
         for(let i = 0; i < childNodes.length; i++){
+            // removeChild 메소드가 호출 될 때마다
+            // childNodes 가 실시간 변경이 되어
+            // 홀수번째 1,3,5,7 요소만 삭제가 된다.
             $list.removeChild(childNodes[i]);
         }
-        
         console.log(childNodes);
     </script>
+    <pre>
+        <b>
+        HTMLColleciton 과 NodeList 특정 문제를 겪지 않고 싶다면 [...] 
+        스프레드 문법으로 배열로 바꾸는게 좋다.
+        </b>
+    </pre>
 </body>
 </html>
