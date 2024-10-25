@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sibling-node</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">03. 형제 관계 노드 탐색</h1>
+    <hr>
+    <ol id="node">
+        <li><b>previousSibling : 형제 중 이전 형제 노드(요소, 텍스트) 탐색</b></li>
+        <li><b>nextSibling : 형제 중 자신의 다음 형제 노드(요소, 텍스트) 탐색</b></li>
+    </ol>
+    <script>
+        const $node = document.getElementById('node');
+
+        // const firstChild = $node.firstChild; // 밑에 문장과 동일한 구문이다. {}을 써서 변수명이랑 프로퍼티랑 같으면
+                                                // 자바스크립트 표현식을 생략 할 수 있다. (구조 분해 할당)
+        const {firstChild} = $node;
+        console.log(firstChild);
+
+        const{nextSibling} = firstChild;
+        console.log(nextSibling); // 다음 형제 노드 요소 반환
+        // int x = 10;
+        // int z = x; 위에 *{} 같은 뜻 이다.
+        const{previousSibling} = nextSibling;
+        console.log(previousSibling); // 이전 형제 노드 요소로 반환
+
+        // 태그 요소 노드만 취득하고 싶으면
+        // previousElementSibling
+        // nextElementSibling 을 사용하면 된다.
+</script>
+</body>
+</html>

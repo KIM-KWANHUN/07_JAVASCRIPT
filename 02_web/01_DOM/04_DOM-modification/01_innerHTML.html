@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <H1 class="title">01. innerHTML</H1>
+    <hr>
+    <pre>
+    <h3>innerHTML 란?...</h3>
+    innerHTML 프로퍼티는 getter, setter 가 존재하는 프로퍼티이다.
+    요소 노드의 HTML 마크업 언어를 취득하거나 변경한다.
+    textContent 는 HTML 마크업을 무시하고 text 만 반환을 하지만,
+    innerHTML 프로퍼티를 html 마크업이 포함 된 문자열을 그대로 반환해준다.
+    </pre>
+    <div id="area">태그 엘리먼트 값 읽거나 변경 시 <span>innerHTML</span>사용</div>
+    <script>
+        const $area = document.getElementById('area');
+        // 가지고 있는 요소 텍스트로 반환
+        console.log($area.innerHTML);
+
+        // 추가  = += 을 이용해 새롭게 추가해준다.
+        $area.innerHTML += ' 새롭게 추가';
+        
+        // 노드 교체 : = 을 붙여서 변경을 해준다.
+        $area.innerHTML = '<h1>innerHTML</h1> 변경!!!'
+
+        // 노드 삭제 : 삭제는 빈문자열 만 넣으면 된다.
+        $area.innerHTML = '';
+    </script>
+
+    <pre>
+    <h3>innerHTML 장단점...</h3>
+    innerHTML 을 사용하면 DOM 조작이 직관적이고
+    간단하다는 장점이 존재한다.
+    하지만 사용자가 입력한 데이터를 그대로
+    innerHTML 에 넣게 되면 HTML을 아는 악성 유저는
+    이를 이용해서 에러를 발생시킬 수 있다.
+    </pre>
+
+    <script>
+        $area.innerHTML = `<img src ='x' onerror='alert("맨날할껴~~~~")'>`;
+    </script>
+</body>
+</html>
