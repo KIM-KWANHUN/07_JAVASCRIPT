@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">01. attribute(속성)</h1>
+    <hr>
+    <h3>어트리뷰트란?...</h3>
+    <pre>
+        Element(태그) 들은 attribute 라고 하는 프로퍼티가 존재한다.
+        ex)p class ="" class같은걸 의미함
+    </pre>
+    <label for="username">유저명 : </label>
+    <input type="text" id="username" value="user01">
+    <script>
+        const {attributes} = document.getElementById('username');
+        // attributes.attributes; // 변수명이랑 사용할 함수가 같으면 {}을 쳐준다 위에 글참고
+
+        console.log(attributes);
+
+        console.log(attributes.id.value);
+        console.log(attributes.value.value);
+    </script>
+    <hr>
+    <h3>get, set 사용</h3>
+    <pre>   
+        Element 의 getAttribute / setAttribute 메소드를 사용하면
+        attributes 객체를 사용하지 않고 접근을 할 수 있다.
+    </pre>
+    <script>
+        const $input = document.getElementById('username');
+
+        // 인자로 취득하고 싶은 속성을 문자열로 정의한다.
+        const $inputValue = $input.getAttribute('value');
+        console.log($inputValue);
+
+        // value 속성 값 변경
+        // 첫번째 인자로 변경하고 싶은 속성명
+        // 두번째 인자는 변경하고 싶은 값
+        $input.setAttribute('value', '푸바오'); // set을 이용해서 변경함
+    </script>
+    <hr>
+    <pre>
+        Element 가 제공하는
+        <b>hasAttribute(속성명)</b> : 인자로 전달한 어트리뷰트 존재 여부
+        <b>removeAttribute(속성명)</b> : 인자로 전달한 어트리뷰트 삭제
+    </pre>
+    <label for="nickname">닉네임 : </label>
+    <input type="text" id="nickname" value="JSMaster">
+    <script>
+        const $nickname = document.getElementById('nickname');
+
+        // name 이라고 하는 속성(attribute) 가지고 있는 지 확인
+        console.log($nickname.hasAttribute('name'));
+
+        if($nickname.hasAttribute('value')) {
+            $nickname.removeAttribute('value');
+        };
+    </script>
+</body>
+</html>

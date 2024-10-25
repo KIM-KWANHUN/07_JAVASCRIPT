@@ -13,7 +13,7 @@
 <body>
     <h1 class="title">04. 노드 삽입, 이동</h1>
     <hr>
-    <h3>노드 삽입</h3>
+    <h3>노드 삽입이란...</h3>
     <pre>
         <b>appendChild(childNode)</b>
         - 인자로 전달 받은 노드를 appendChild 메소드를 호출한
@@ -24,5 +24,61 @@
         - 다만 주의점은 두 번째 인자는 반드시
           insertBefore 를 호출한 노드의 자식 노드이어야 한다.
     </pre>
+    <ul id="drink">
+        <li>커피</li>
+    </ul>
+    <script>
+        const $drink = document.getElementById('drink');
+
+        const $li1 = document.createElement('li');
+
+        $li1.textContent = '맥콜';
+        // 가장 마지막 자식 노드로 추가 되는 특징을 가진다.
+        $drink.appendChild($li1);
+
+        const $li2 = document.createElement('li');
+
+        $li2.textContent = '밀키스';
+
+        // li2 에 들어있는 밀키스를 맥콜 앞에 삽입
+        // insertBefore 
+        // 첫번째 인자로 삽입하려는 대상
+        // 두번째 인자는 기준위치
+        $drink.insertBefore($li2, $drink.lastElementChild);
+
+        const $li3 = document.createElement('li');
+
+        $li3.textContent = '사이다';
+
+        // 두 번째 인자가 null 이면
+        // appendChild 와 동일하게 동작을 한다. 즉 가장 마지막에 인자가 붙는다.
+        $drink.insertBefore($li3, null);
+    </script>
+    <hr>
+    <h3>노드 이동이란?...</h3>
+    <pre>
+        DOM에 이미 존재하는 노드를 <B>appendChild, insertBefore</B>
+        메소드를 사용해서 DOM 에 추가를 하게 되면
+        현재 위치에서 노드를 제거하고 새로운 위치에 노드를
+        추가하는 노드 이동이 발생하게 된다.
+    </pre>
+    <ul id="food">
+        <li>치킨</li>
+        <li>피자</li>
+    </ul>
+
+    <script>
+        const $food = document.getElementById('food');
+        // 치킨 노드와 피자 노드 취득
+
+        // const $chicken = $food.firstElementChild;
+        // const $pizza = $food.lastElementChild;
+        const test = $food.children;
+        console.log(test);
+
+        const [$chicken, $pizza] = $food.children;
+        $food.appendChild($chicken);
+
+    </script>
 </body>
 </html>
