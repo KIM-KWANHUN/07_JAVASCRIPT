@@ -46,12 +46,13 @@
             // highlight();
             if(e.target.matches('li')) {
                 highlight(e.target);
+                // e.target 이벤트가 일어나는 주최
             }
         });
 
         function highlight(li) {
             li.classList.toggle('highlight');
-        }
+        };
     </script>
 </body>
 </html>
