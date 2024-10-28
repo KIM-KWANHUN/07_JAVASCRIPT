@@ -7,11 +7,59 @@
     <style>
         .title{
             text-align: center;
+            color: green;
+        }
+
+        .area {
+            height: 120px;
+            width: 120px;
+            background-color: black;
+            color: red;
         }
     </style>
 </head>
 <body>
-    <h1 class="title">02. event property 방식</h1>
-    
+    <h1 class="title">01. 이벤트 객체</h1>
+    <hr>
+    <pre>
+    <h3>이벤트 객체란?...</h3>
+        이벤트 발생 시 이벤트와 관련 된 객체가 동적으로 생성이 됨.
+        생성이 된 이벤트 객체는 이벤트 핸들러의 첫 번째 인수로 전달이 된다.
+    </pre>
+    <hr>
+    <h1 class="message">아무곳이나 클릭해보세요!!! 좌표를 알려드릴께요!!</h1>
+    <script>
+        const $message = document.querySelector('.message');
+
+        // 클릭 이벤트에 의해 생성 된 이벤트 객체는
+        // 이벤트 핸들러의 첫 번째 인수로 전달된다.
+
+        function showCoords(e) {
+            console.log(e);
+            $message.textContent = `X 좌표 : ${e.clientX}, Y 좌표 : ${e.clientY}`;
+        };
+        // 전체페이지에 이벤트 추가 document.함수
+        document.onclick = showCoords;
+    </script>
+    <hr>
+    <pre>
+        위에서 한 것은 프로퍼티 방식으로 이벤트 등록
+        이제 attribute 방식으로 이벤트 등록 시 유의점
+        attribute 방식으로 이벤트를 등록했다면 전달인자는
+        반드시 event 라는 이름으로 작성해야 한다.
+    </pre>
+    <div class="area" onclick="showDivCoords(event)">
+        이 영역 내부를 클릭하시면 
+        좌표를 알려드리겠습니다!!
+    </div>
+    <script>
+        const $area = document.querySelector('.area');
+
+        function showDivCoords(e) {
+            console.log(e);
+            $area.textContent = `X 좌표 : ${e.clientX}, Y 좌표 : ${e.clientY}`;
+        }
+    </script>
+
 </body>
 </html>
