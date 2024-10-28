@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add-Event-Listener</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">03. add-Event-Listener 방식</h1>
+    <hr>
+    <pre>
+    <h3>add-Event-Listener 방식이란..</h3>
+        EventTarget.addEventListner 메소드를 사용해서
+        등록할 수 있다.
+        EventTarget.addEventListner('eventType',functionName[, useCapture]) []는 생략가능!!
+        첫 번째 인자 eventType은 이벤트의 타입을 지정하며, on 접두사는 생략한다. ex)('click' on은 생략)
+        두 번째 인자 functionName 은 이벤트 핸들러 함수를 등록한다.
+        세 번째 인자 생략이 가능하며, 이벤트 전파와 관련();
+    </pre>
+    <hr>
+    <button id="btn">절때 누르지 마시오</button>
+
+    <script>
+        const $btn = document.getElementById('btn');
+
+        $btn.addEventListener('click', function() {
+            alert('클릭하지마!!');
+        });
+
+    // 프로퍼티 방식으로 이벤트 추가
+
+    $btn.onclick = function(){
+        console.log('프로퍼티 방식으로 이벤트 추가');
+    };
+
+    $btn.addEventListener('click', function(){
+        console.log('add 방식으로 이벤트 추가');
+    });
+
+    // 외부에 함수 정의 후 참조
+    const mouseover = function(){
+        console.log('마우스 호버');
+    }
+    // 바로 위에 만들어논 mouseover 함수 2번째 인자에 참조
+    $btn.addEventListener('mouseover', mouseover);
+    // 중복 된 이벤트를 등록하면, 하나면 등록 된다.
+    $btn.addEventListener('mouseover', mouseover);
+
+    </script>
+</body>
+</html>

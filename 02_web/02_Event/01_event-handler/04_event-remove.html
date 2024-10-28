@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-remove</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">04. event remove 로 등록된 이벤트 제거하기</h1>
+    <hr>
+    <pre>
+    <h3>removeEventListener란?...</h3>
+        removeEventListener 메소드를 통해
+        add 한 이벤트를 제거할 수 있다.
+    </pre>
+
+    <button id="btn">클릭!!</button>
+
+    <script>
+        const $btn = document.getElementById('btn');
+
+        const handleClick = function(){
+            alert('클릭했네?');
+        };
+        // addEventListener 로 이벤트 등록하기
+        $btn.addEventListener('click', handleClick);
+
+        // removeEventListener 로 이벤트 삭제하기
+        $btn.removeEventListener('click', handleClick);
+
+        // addEventListener 로 이벤트 등록하기
+        $btn.addEventListener('mouseover', function(){
+            alert('클릭 또 했네??');
+        });
+
+        // removeEventListener 로 이벤트 삭제가 되지않는다.
+        // 참조가 불가능한 함수를 정의를 하면 삭제가 불가능 하다.
+        // 변수로 할당하여 참조 해야한다.
+        $btn.removeEventListener('mouseover', function(){
+            alert('클릭 또 했네??');
+        });
+    </script>
+    <hr>
+    <pre>
+        이벤트를 프로퍼티 방식으로 등록한 이벤트 삭제 하는 방법
+    </pre>
+        <button id="btn2">더블클릭!!</button>
+
+    <script>
+        const $btn2 = document.getElementById('btn2');
+        
+        const handleDbl = function(){
+            alert('혹시나해서 물어보는데 더블클릭했나요?');
+        };
+
+        // 프로퍼티에 함수 할당하기
+        $btn2.ondblclick = handleDbl;
+
+        // 더블클릭 이벤트 삭제하기 삭제가 되지 않는다.
+        $btn2.removeEventListener('dblclick', handleDbl);
+
+        // 프로퍼티 방식으로 등록을 했기 때문에 삭제가 되지 않음
+        // Listner 방식으로는 삭제가 되지 않음
+
+        // 제거가 필요한 프로퍼티에 null 값을 넣으면 기존에 이벤트가 삭제된다.
+        $btn2.ondblclick = null;
+    </script>
+</body>
+</html>

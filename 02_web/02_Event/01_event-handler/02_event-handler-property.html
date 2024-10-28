@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-handler-property</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">02. event property 방식</h1>
+    <hr>
+    <pre>
+    <h3>event property 방식이란..</h3>
+        DOM 요소는 우리가 취득을 하고 출력을 했을 때,
+        수 많은 프로퍼티 들이 존재했다.
+        그 중 이벤트 관련 프로퍼티는 ON 접두사 + 이벤트 타입
+        형식으로 되어 있으며, 함수를 집어넣어주면 된다.
+        <br>
+        어트리뷰트 방식과 비교 했을 때 
+        HTML 언어와 JavaScript 언어가 분리가 되었다.
+        따라서 우리는 JavaScript 언어는 따로 js 파일에 
+        저장을 해두고 필요 시 head 영역에서 읽어드리면
+        html 파일은 html 요소만 있는 파일로 만들 수 있다.
+    </pre>
+    <hr>
+    <button id="btn">클릭</button>
+    <hr>
+    <script>
+        const $btn = document.getElementById('btn'); // DOM 요소 취득
+        console.log($btn);
+        $btn.onclick = function() {
+            alert('DOM 프로퍼티 방식으로 이벤트 등록 성공!!!');
+        };
+    </script>
+    <pre>
+        <h3>event property 단점</h3>
+        2개 이상의 이벤트를 등록하려 할 때,
+        이전 이벤트가 덮여 씌어지는 단점을 가지고 있다.
+        하나의 이벤트 밖에 연결을 할수 밖에없는 치명적 단점을 가지고 있다.
+    </pre>
+    <script>
+    $btn.onclick = function(){
+        alert('2번째 이벤트 등록 성공!!!');
+    };
+    </script>
+    
+</body>
+</html>
