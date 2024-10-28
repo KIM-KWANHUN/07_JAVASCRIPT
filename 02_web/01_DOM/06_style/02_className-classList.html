@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>className-classList</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+
+        .area {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .circle{
+            border-radius: 50%;
+        }
+
+        .lightgray{
+            background-color: lightgray;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">02. className 과 classList</h1>
+    <hr>
+    <pre>
+        <h3>className 과 classList란?...</h3>
+        우리가 작성하는 class 속성은 DOM 프로퍼티에서는
+        className 과 classList 형식으로 지정이 되어 있다.
+    </pre>
+    <div class="area"></div>
+    
+    <script>
+        const $area = document.querySelector('.area');
+        console.log($area);
+
+        // 클래스명을 덮어쓰게 되면
+        // .area 가 제거됨.
+        // $area.className = 'circle';
+        console.log($area.classList);
+        // 클래스명 덮어쓰는 것이 아닌 추가하기
+        $area.classList.add('circle');
+        $area.classList.add('lightgray');
+
+        // item(index) 인수로 전달한 인덱스에 해당하는 클래스 반환
+        console.log($area.classList.item(0));
+
+        // replace(old, new) 첨에는 old, 다음에는 new 키워드 전달
+        // 첫번째 인자는 바꿀 클래스명, 두번째 인자는 바꾸고싶은 클래스명
+        $area.classList.replace('lightgray', 'yellow');
+
+        // toggle(className) yellow 라는 키값과 동일한것이 있으면 제거해주는 기능
+        // toggle 은 전달한 문자열이 존재하면 삭제, 
+        $area.classList.toggle('yellow');
+        // 문자열이 존재하지 않으면 추가!!
+        $area.classList.toggle('yellow');
+    
+    </script>
+
+</body>
+</html>
