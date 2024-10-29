@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="intput-event" content="width=device-width, initial-scale=1.0">
+    <title>input-event</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+
+        .lightgray {
+            background-color: lightgray;
+        }
+
+        .focused {
+            outline : 3px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">04. 사용자의 입력 관련 이벤트</h1>
+    <hr>
+    
+    <form name="join">
+        <label for="username">이름 : </label>
+        <input type="text" name="name" id="username" value="김관훈">
+        <br>
+        <label>성별 : </label>
+        <input type="radio" name="gender" id="male" value="m" checked>
+        <label for="male">남성</label>
+        <input type="radio" name="gender" id="female" value="f" checked>
+        <label for="female">여성</label>
+        <br>
+        <label>나이</label>
+        <select name="age" id="age">
+            <option value="10">10대 이하</option>
+            <option value="20">20대</option>
+            <option value="30">30대</option>
+            <option value="40">40대</option>
+            <option value="50">50대</option>
+            <option value="60">60대</option>
+        </select>
+        <br>
+        <label>자기소개 문구</label><br>
+        <textarea name="introduce" id="introduce" rows="5" cols="30">
+            나를 소개해봐!!
+        </textarea>
+        <span>0</span>/5000자
+        <input type="submit" value="제출">
+    </form>
+    <hr>
+    <pre>
+        <h3>폼 요소 값 다루기란?...</h3>
+        <b>input, textarea </b>: input.value 또는 input.checked
+        <b>select.options </b>: option 하위 요소를 담고 있는 컬렉션
+        <b>select.value </b>: 현재 선택이 된 option 값
+        <b>select.selectedIndex </b>: 현재 선택 된 option 의 index 번호
+        value 의 특징은 우리가 입력한 값을 가지고 있다.
+    </pre>
+    <script>
+        // 폼 태그에 우리가 입력할 양식을 모아두었다.
+        // 폼 태그 추출
+        console.log(document.forms);
+        console.log(document.forms.join); // name 속성 방식 ..으로 타고 들어간다 프로퍼티방ㅅ익
+        console.log(document.forms[0]); // 인덱스값으로 접근하는 방식
+
+        const $form = document.forms.join;
+
+        // 요소 취득
+        const $username = $form.username;
+        console.log(`$username.value : ${$username.value}`);
+        // 값 변경
+        $username.value = 'koala';
+
+        const $gender = $form.gender;
+        console.log(`$gender[1].checked : ${$gender[1].checked}`);
+        $gender[1].checked = true;
+
+        const $age = $form.age;
+        console.log($age);
+        console.log($age.options);
+        $age.options[2].selected = true;
+
+        const $introduce = $form.introduce;
+        console.log($introduce.value);
+        $introduce.value = '안녕하세요~~';
+    </script>
+</body>
+</html>
