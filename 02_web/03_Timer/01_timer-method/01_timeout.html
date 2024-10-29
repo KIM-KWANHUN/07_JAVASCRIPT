@@ -12,5 +12,41 @@
 </head>
 <body>
     <h1 class="title">01. timeout</h1>
+    <hr>
+    <pre>
+        <h3>setTimeOut 이란?...</h3>
+        표현식 : <b>setTimeout</b>(fuction | code [, delay,parameter1, parameter2, ....]) 
+                 함수나 코드를 바로 전달해도됨 대가로는 생략가능
+        <b>setTimeout()</b> 함수는 두 번째 인자로 전달한 시간으로 단 한 번
+        동작하는 타이머가 생성한다.
+        이후 타이머가 만료되면 첫 번째 인자로 전달 받은 콜백함수를
+        호출한다. 콜백함수에 전달 할 인자가 존재하는 경우
+        세 번째 이후 인자로 전달할 수 있다.
+    </pre>
+    <hr>
+    <script>
+        setTimeout(function() {
+            console.log('1초 지났어 ㅎ')
+        }, 1000); // 2번째 인자는 시간 1000ms이면 1초 
+
+        setTimeout(function(msg){
+            console.log(`1..2..3..4..${msg}`)
+        },4000, '오래 기다렷니?');
+    </script>
+    <pre>
+        <h3>clearTimeout 이란?...</h3>
+        setTimeOut 함수는 생성된 타이머를 식별할 수 있는 id 를
+        가지고 있다. 반환 한 아이디를 <b>clearTimeout </b>함수의 인자로
+        전달을 하게 되면 타이머를 취소할 수 있다.
+    </pre>
+    <hr>
+    <script>
+        const timeoutId = 
+            setTimeout(function(){
+                console.log('취소 될 함수')}, 2000);
+                console.log(timeoutId);
+            // clearTimeout을 넣으면 청소를 하게되어 더이상 동작하지 않게 된다.
+            clearTimeout(timeoutId);
+    </script>
 </body>
 </html>

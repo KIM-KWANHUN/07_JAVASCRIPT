@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>interval</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">02. interval</h1>
+    <hr>
+    <pre>
+        <h3>interval 이란?...</h3>
+        표현식 : <b>setInterval </b>(fuction | code [, delay(초), parameter1, parameter2, ...])
+        전달 받은 시간으로 <b>반복적</b>으로 동작하는 타이머 함수
+        이후 타이머가 만료될 때까지 계속된다.
+    </pre>
+    <hr>
+    <script>
+        let count = 1;
+        const timerId = setInterval(function(){
+            console.log(count);
+            if(count++ == 10) {
+                clearInterval(timerId);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
