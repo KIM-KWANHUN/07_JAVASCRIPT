@@ -151,8 +151,12 @@
     </pre>
     <script>
         $introduce.addEventListener('input', function(e){
-            console.log(e.target.value);
-        })
+            // console.log(e.target.value);
+            let len = e.target.value.trim().length;
+            console.log(len);
+            // span 태그 추출
+            $form.querySelector('span').textContent = len;
+        });
     </script>
 </body>
-</html>
+</html>ma
