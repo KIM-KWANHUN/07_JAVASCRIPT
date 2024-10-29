@@ -20,6 +20,24 @@
         그리고 검증을 거쳐 이상한 값이 들어오면 취소하는
         역활을 하게 된다.
     </pre>
-    <form action="http://search.naver.com/search.naver"></form>
+    <form action="http://search.naver.com/search.naver" 
+    method="get" 
+    name="search">
+    <input type="text" name="query" placeholder="검색 키워드 작성">
+    <button type="submit">검색어 네이버로 검색하기</button>
+    </form>
+    <script>
+        const $form = document.forms.search;
+
+        $form.onsubmit = function() {
+            let keyword = this.querySelector('input[name=query]').value;
+            // 제출하는 순간 이벤트 발생 시키기
+
+            if(!keyword) {
+                alert('검색어는 필수입니다!!');
+                return false;
+            }
+        };
+    </script>
 </body>
 </html>
