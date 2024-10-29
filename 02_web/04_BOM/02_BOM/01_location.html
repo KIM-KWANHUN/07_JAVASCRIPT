@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <style>
+        .title {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">01. location</h1>
+    <pre>
+        <h3>BOM(Browser Object Model) 이란?...</h3>
+        DOM(문서) 이외에 모든 것들을 제어하기 위해
+        브라우저가 제공하는 추가적인 객체를 의미한다.
+    </pre>
+    <hr>
+    <pre>
+        <h3>locaton 이란?..</h3>
+        location 객체는 현재 URL 을 읽게 해주며
+        새로운 URL 로 변경을 할 수 있게 해준다.
+    </pre>
+    <hr>
+    <h1>버튼 생성</h1>
+    <button id="btn1">새 페이지로 이동하기 1</button><br>
+    <button id="btn2">새 페이지로 이동하기 2</button><br>
+    <button id="btn3">새 페이지로 이동하기 3</button><br>
+    <button id="btn4">새 페이지로 이동하기 4 (뒤로가기 불가!!)</button><br>
+    <button id="btn5">서버로부터 현재 페이지 리로드 1</button><br>
+    <button id="btn6">서버로부터 현재 페이지 리로드 2</button>
+    <script>
+        document.getElementById('btn1').onclick = function(){location.assign("http://naver.com");}
+        document.getElementById('btn2').onclick = function(){location = "http://google.com";}
+        document.getElementById('btn3').onclick = function(){location.href = "http://daum.net";}
+        document.getElementById('btn4').onclick = function(){location.replace("http://nexon.com");}
+        document.getElementById('btn5').onclick = function(){location.reload()};
+        document.getElementById('btn6').onclick = function(){location = location};
+    </script>
+</body>
+</html>

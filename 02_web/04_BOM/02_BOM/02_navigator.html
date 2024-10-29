@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">02. navigator</h1>
+    <hr>
+    <pre>
+        <h3>navigator 란?...</h3>'
+        navigator 객체는 브라우저와 운영체제 정보가 담겨있다.
+    </pre>
+    <hr>
+    <script>
+        for(prop in navigator) {
+            console.log(`${prop} : ${navigator[prop]}`)
+        };
+    </script>
+</body>
+</html>
