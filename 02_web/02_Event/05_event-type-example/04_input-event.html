@@ -29,7 +29,7 @@
         <label>성별 : </label>
         <input type="radio" name="gender" id="male" value="m" checked>
         <label for="male">남성</label>
-        <input type="radio" name="gender" id="female" value="f" checked>
+        <input type="radio" name="gender" id="female" value="f">
         <label for="female">여성</label>
         <br>
         <label>나이</label>
@@ -85,6 +85,74 @@
         const $introduce = $form.introduce;
         console.log($introduce.value);
         $introduce.value = '안녕하세요~~';
+    </script>
+    <hr>
+    <pre>
+    <h3>focus, blur 이벤트란?...</h3>
+    <b>focus </b>: 사용자가 폼 요소를 클릭하거나 tab 키를 눌러 요소로 이동했을 때 발생하는 이벤트 
+    <b>blur </b>: 사용자가 다른 곳을 선택하거나 tab 키를 눌러 다른 폼 요소로 이동했을 때 발생하는 이벤트 
+    </pre>
+    <script>
+        $username.opfocus = function(e) {
+            // 이벤트가 일어나는 주체에 lightgray 클래스 속성 추가
+            e.target.classList.toggle('lightgray');
+        }
+
+        $username.opblur = function(e) {
+            // 이벤트가 일어나는 주체에 lightgray 클래스 속성 추가
+            e.target.classList.toggle('lightgray')  ;
+        }
+    </script>
+    <hr>
+    <pre>
+        <h3>focusin, focusout 이벤트란?...</h3>
+        focus 이벤트는 해당 입력 필드에만 동작하고
+        버블링 되지 않는다.
+        버블링이 필요하다면 focusin, focusout 이벤트를 사용한다.
+        버블링 : 하나의 요소에 이벤트를 추가하면 자식에게 이벤트를 전파한다.
+    </pre>
+    <script>
+        // $form.addEventListener('focus', function(e){
+        //     e.target.classList.add('focused');
+        // });
+        // $form.addEventListener('blur', function(e){
+        //     e.target.classList.remove('focused');
+        // });
+        $form.addEventListener('focusin', function(e){
+            e.target.classList.add('focused');
+        });
+
+        $form.addEventListener('focusout', function(e){
+            e.target.classList.remove('focused');
+        });
+    </script>
+    <hr>
+    <pre>
+        <h3>change 이벤트란?...</h3>
+        change 이벤트는 요소 변경이 끝나면 발생하는 이벤트이다.
+        select / checkbox / radio 같은 경우 선택 값이
+        변경 된 직후 발생을 하게 되며
+        텍스트 입력 요소는 변경 후 포커스를 잃었을 때
+        발생을 하게 된다.
+    </pre>
+    <hr>
+    <script>
+        $age.addEventListener('change',function(e){
+            alert('나이가 변경되었습니다...');
+        });
+
+        $introduce.addEventListener('change', function(e){
+            alert('자기소개가 변경되었습니다...');
+        })
+    </script>
+    <pre>
+        <h3>input 이벤트란?...</h3>
+        input 이벤트는 값을 변경할 때 발생한다.
+    </pre>
+    <script>
+        $introduce.addEventListener('input', function(e){
+            console.log(e.target.value);
+        })
     </script>
 </body>
 </html>
