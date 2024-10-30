@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <style>
+        body {
+            background-color: rgb(133, 219, 98);
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+            margin: 0;
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+        }
+        #div1, #div2 {
+            width: 50%;
+        }
+        pre {
+            text-align: center;
+            font-size: 130px;
+            color: white;
+        }
+        #E {color: red; background-color: rgba(255, 151, 151, 0.815); border-radius: 50px;}
+        #M {color: purple; background-color: rgba(189, 112, 252, 0.637); border-radius: 50px;}
+        #by {color: rgb(255, 255, 255); background-color: rgba(249, 252, 81, 0.658); border-radius: 50px;}
+        #s {color: green; background-color: rgba(88, 255, 138, 0.637); border-radius: 50px;}
+        .toDOList {
+            background-color: rgba(255, 255, 255, 0.623);
+            align-items: center;
+            width: 700px;
+            max-height: 700px;
+            margin-top: 8%;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column; /* 세로 방향 정렬 */
+            padding: 20px; /* 내부 여백 추가 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+        }
+        .inpWithbutContainer {
+            display: flex;
+            justify-content: center; /* 중앙 정렬 */
+            align-items: center;
+            margin-bottom: 20px; /* 입력 필드와 리스트 사이 간격 */
+        }
+        .inpWithbutContainer input {
+            width: 600px; 
+            height: 50px;
+            font-size: 20px; 
+            border-radius: 20px; 
+            background-color: bisque; 
+            text-align: center;
+            border: 2px solid rgb(235, 157, 129);
+            margin-right: 10px; /* 버튼과의 간격 */
+        }
+        .inpWithbutContainer button {
+            border-radius: 30px; 
+            background-color: pink;
+            font-size: 20px;
+            width: 50px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none; /* 기본 리스트 스타일 제거 */
+            padding: 0; /* 기본 패딩 제거 */
+            width: 100%; /* 전체 너비 사용 */
+        }
+        .item {
+            margin-top: 20px;
+            height: 40px;
+            width: 100%; /* 전체 너비 사용 */
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center; /* 수직 정렬 */
+            background-color: pink;
+            font-size: 20px;
+            padding-left: 10px; /* 좌측 여백 */
+            justify-content: space-between; /* 아이템을 양쪽 끝으로 정렬 */
+        }
+        .checkbox {
+            margin-right: 5px; 
+            appearance: none; 
+            width: 20px; 
+            height: 20px; 
+            border: 2px solid #888; 
+            border-radius: 4px; 
+            outline: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s, border-color 0.3s; 
+        }
+        .checkbox:checked {
+            background-color: #36b83a; /* 체크된 상태의 배경색 */
+            border-color: #36b83a; /* 체크된 상태의 테두리 색상 */
+        }
+        .complete-text {
+            margin-left: 10px; /* 문구와 텍스트 간 간격 조정 */
+            color: green; /* 문구 색상 */
+            font-weight: bold; /* 문구 볼드체 */
+        }
+        .delete-button {
+            background-color: red; /* 삭제 버튼 배경색 */
+            color: white; /* 삭제 버튼 글자색 */
+            border: none; /* 테두리 제거 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            cursor: pointer; /* 커서 모양 변경 */
+            padding: 5px 10px; /* 버튼 패딩 */
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <pre>
+<b id="E">E</b><b id="M">M</b><b id="by">'</b><b id="s">s</b>
+TO-DO
+LIST
+HOMEPAGE
+</pre>
+    </div>
+    <div id="div2">
+        <div class="toDOList">
+            <div class="inpWithbutContainer">
+                <input type="text" id="userInput" placeholder="오늘의 할 일을 입력해주세요" />
+                <button onclick="displayInput()">▼</button>
+            </div>
+            <ul id="list"></ul>
+
+            <script>
+                function displayInput() {
+                    const input = document.getElementById("userInput").value;
+
+                    if (input) {            
+                        const todoItem = document.createElement("li");
+                        todoItem.className = "item";
+
+                        const deleteButton = document.createElement("button");
+                        deleteButton.className = "delete-button";
+                        deleteButton.textContent = "삭제"; // 버튼 텍스트
+                        deleteButton.onclick = function() {
+                            document.getElementById("list").removeChild(todoItem); // li 삭제
+                        };
+
+                        const checkbox = document.createElement("input");
+                        checkbox.type = "checkbox";
+                        checkbox.className = "checkbox";
+
+                        const complete = document.createElement("span");
+                        complete.className = "complete-text";
+                        complete.style.display = "none";
+                        
+                        checkbox.addEventListener('change', function() {
+                            if (this.checked) {
+                                complete.textContent = "complete"; // complete 문구 추가
+                                complete.style.display = "inline"; // 문구 보이기
+                            } else {
+                                complete.style.display = "none"; // 문구 숨기기
+                            }
+                        });
+
+                        todoItem.appendChild(checkbox);
+                        todoItem.appendChild(document.createTextNode(input));
+                        todoItem.appendChild(complete); // complete 문구를 li에 추가
+                        todoItem.appendChild(deleteButton); // 삭제 버튼 추가
+
+                        // #list 영역에 추가
+                        document.getElementById("list").appendChild(todoItem);
+
+                        // 입력 필드 초기화
+                        document.getElementById("userInput").value = '';
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

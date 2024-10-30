@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계획표</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f9c9d6, #ffebee);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            height: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* 세로 스크롤 허용 */
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6f61;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 15px;
+            border: 2px solid #ff6f61;
+            border-radius: 25px;
+            margin-right: 10px;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff3d47;
+            outline: none;
+        }
+
+        button {
+            padding: 15px 20px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3d47;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffe0e0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+            opacity: 0; /* 초기 상태에서 투명 */
+            transform: translateY(-20px); /* 위로 이동 */
+            animation: slideIn 0.3s forwards, sparkle 1s forwards; /* 추가 시 애니메이션 */
+        }
+
+        li.show {
+            opacity: 1; /* 보이게 */
+            transform: translateY(0); /* 원래 위치로 */
+        }
+
+        li.fade-out {
+            opacity: 0; /* 투명하게 */
+            transform: translateY(-20px); /* 위로 이동 */
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        li:hover {
+            background-color: #ffb3b3;
+        }
+
+        .delete-btn {
+            background-color: #ff4d4f;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        .delete-btn:hover {
+            background-color: #d43f3f;
+        }
+
+        #btn2 {
+            background-color: #ff0800;
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        #btn3 {
+            background-color: #ff0800;
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+                color: #ff6f61;
+            }
+            50% {
+                opacity: 0.5;
+                color: #ffb3b3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>오늘의 계획표</h1>
+        <input type="text" id="taskInput" placeholder="오늘의 계획을 입력 해봐~~">
+        <button id="addTaskBtn">GO</button>
+        <ul id="List"></ul>
+        <button id="btn2">전체 삭제</button>
+        <button id="btn3">절때 누르지마시오</button>
+    </div>
+    <script>
+        const MAX_TASKS = 5; // 최대 항목 수
+
+        document.getElementById('addTaskBtn').addEventListener('click', function() {
+            addTask();
+        });
+
+        document.getElementById('taskInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const $Text = taskInput.value.trim();
+            const $List = document.getElementById('List');
+
+            // 현재 항목 수 확인
+            const currentTasks = $List.children.length;
+
+            if ($Text) {
+                if (currentTasks < MAX_TASKS) { // 최대 항목 수 확인
+                    const $li = document.createElement('li');
+                    $li.textContent = $Text;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = '삭제';
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.onclick = function() {
+                        $li.classList.add('fade-out'); // 삭제 애니메이션 효과 추가
+                        setTimeout(() => {
+                            $List.removeChild($li);
+                        }, 300); // 애니메이션 시간과 동일하게 설정
+                    };
+
+                    $li.appendChild(deleteBtn);
+                    $List.appendChild($li);
+                    taskInput.value = '';
+
+                    // 애니메이션 효과 추가
+                    setTimeout(() => $li.classList.add('show'), 5); // 추가 후 보여지도록
+                } else {
+                    alert('너 이거 다지킬수 있겠어?'); // 최대 항목 수 초과 시 경고
+                }
+            } else {
+                alert('너 혼날래?');
+            }
+        }
+
+        document.getElementById('btn2').addEventListener('click', function() {
+            const $List = document.getElementById('List');
+            const items = $List.querySelectorAll('li');
+
+            items.forEach(item => {
+                item.classList.add('fade-out'); // 전체 삭제 애니메이션 효과
+                setTimeout(() => {
+                    $List.removeChild(item);
+                }, 300); // 애니메이션 시간과 동일하게 설정
+            });
+        });
+    </script>
+</body>
+</html>

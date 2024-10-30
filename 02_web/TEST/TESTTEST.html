@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계획표</title>
+    <style>
+    * {
+        background: rgb(255, 175, 215);
+    }
+body {
+    font-family: 'Arial', sans-serif;
+    background: rgb(255, 175, 215);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    height: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: lightcoral;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    background: lightcoral;
+}
+
+input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: white;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: lightpink;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: pink;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lig;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+#btn2 {
+    background-color: #ff0800;
+    width: 150px;
+    height: 50px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>오늘의 계획표</h1>
+        <input type="text" id="taskInput" placeholder="오늘의 계획을 입력 해봐~~">
+        <button id="addTaskBtn">GO</button>
+        <ul id="List"></ul>
+        <button id="btn2">절때 누르지마시오</button>
+    </div>
+    <script>
+    document.getElementById('addTaskBtn').addEventListener('click', function() {
+        addTask();
+    });
+
+    document.getElementById('taskInput').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+    });
+
+    function addTask() {
+        const taskInput = document.getElementById('taskInput');
+        const $Text = taskInput.value.trim();
+
+        if ($Text) {
+            const $List = document.getElementById('List');
+            const $li = document.createElement('li');
+            $li.textContent = $Text;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = '삭제';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.onclick = function() {
+                $List.removeChild($li);
+            };
+
+            $li.appendChild(deleteBtn);
+            $List.appendChild($li);
+            taskInput.value = '';
+        } else {
+            alert('혼날래?');
+        }
+    }
+
+    document.getElementById('btn2').addEventListener('click', function() {
+        const $List = document.getElementById('List');
+        $List.innerHTML = ''; // 전체 삭제
+    });
+</script>
+</body>
+</html>
